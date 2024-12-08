@@ -12,13 +12,13 @@ const App = () => {
     <>
       <NavBar user={user} />
       <Routes>
+      <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         { user ? (
           <Route path='/' element={<Dashboard user={user} />} />
         ) : (
-          <Route path='/' element={<Landing/>} />  
+          <Route path='/' element={<Landing />} />  
         )}
       </Routes>
-      <h1>Hello world!</h1>
     </>
   )
 }

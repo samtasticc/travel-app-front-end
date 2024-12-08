@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 
+// ! may have to adjust some of the formData and labels
+
 const SignupForm = (props) => {
     const navigate = useNavigate();
     const [message, setMessage] = useState(['']);
@@ -20,8 +22,12 @@ const SignupForm = (props) => {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-      updateMessage('');
-      console.log(formData); // this line will print the form data to the console
+      try {
+        props.setUser(formData)
+        navigate('/')
+      }catch(err){
+        updateMessage(err.message);
+      }
     };
   
     const { username, password, passwordConf } = formData;
