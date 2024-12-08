@@ -36,9 +36,9 @@ const SigninForm = (props) => {
         <main>
             <h1>Log In</h1>
             <p>{message}</p>
-            <form>
+            <form autoComplete='off' onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor='email'>Username:</label>
+                    <label htmlFor='username'>Username:</label>
                     <input
                         type='text'
                         autoComplete='off'
