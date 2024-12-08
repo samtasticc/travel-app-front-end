@@ -69,3 +69,5 @@ const SigninForm = (props) => {
         </main>
     )
 }
+
+export default SigninForm
