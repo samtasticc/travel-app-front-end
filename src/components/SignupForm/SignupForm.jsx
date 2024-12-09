@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 
-// ! may have to adjust some of the formData and labels
-
 const SignupForm = (props) => {
     const navigate = useNavigate();
     const [message, setMessage] = useState(['']);
