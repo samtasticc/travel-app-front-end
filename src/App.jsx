@@ -6,8 +6,10 @@ import Dashboard from './components/Dashboard/Dashboard';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'
+import TravelList from './components/TravelList/TravelList'
 import './App.css'
 export const AuthedUserContext = createContext(null)
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -24,6 +26,7 @@ const App = () => {
         { user ? (
           < >
           <Route path='/' element={<Dashboard user={user} />} />
+          <Route path='travels' element={<TravelList />} />
           </>
         ) : (
           <Route path='/' element={<Landing />} />  
