@@ -6,13 +6,27 @@ import Dashboard from './components/Dashboard/Dashboard';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import * as authService from '../src/services/authService'
+import * as travelService from '../src/services/travelService'
 import TravelList from './components/TravelList/TravelList'
 import './App.css'
 export const AuthedUserContext = createContext(null)
 
 
+
+
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [travels, setTravels] = useState({})
+
+  useEffect(() => {
+    const fetchAllTravels = async () => {
+      const travelsData = await travelService.index()
+      // console.log('travelsData:', travelsData)
+      setTravels(travelsData)
+    }
+    if (user) fetchAllTravels()
+  }, [user] )
+  
   const handleSignout = () => {
     authService.signout()
     setUser(null)
@@ -26,7 +40,7 @@ const App = () => {
         { user ? (
           < >
           <Route path='/' element={<Dashboard user={user} />} />
-          <Route path='travels' element={<TravelList />} />
+          <Route path='travels' element={<TravelList travels={travels} />} />
           </>
         ) : (
           <Route path='/' element={<Landing />} />  
