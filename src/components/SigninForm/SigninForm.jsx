@@ -7,7 +7,6 @@ const SigninForm = (props) => {
     const [message, setMessage] = useState([''])
     const [formData, setFormData] = useState({
         username: '',
-        email: '',
         password: '',
     })
 
@@ -44,17 +43,6 @@ const SigninForm = (props) => {
                         id='username'
                         value={formData.username}
                         name='username'
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='email'>Email:</label>
-                    <input
-                        type='test'
-                        autoComplete='off'
-                        id='email'
-                        value={formData.email}
-                        name='email'
                         onChange={handleChange}
                     />
                 </div>
