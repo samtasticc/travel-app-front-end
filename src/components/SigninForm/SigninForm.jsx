@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import * as authService from '../../services/authService'
 
-// ! may have to adjust some of the formData and labels
-
 const SigninForm = (props) => {
     const navigate = useNavigate()
     const [message, setMessage] = useState([''])

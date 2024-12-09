@@ -8,6 +8,7 @@ const SignupForm = (props) => {
     const [message, setMessage] = useState(['']);
     const [formData, setFormData] = useState({
       username: '',
+      email:'',
       password: '',
       passwordConf: '',
     });
@@ -48,6 +49,16 @@ const SignupForm = (props) => {
               id="name"
               value={username}
               name="username"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="text"
+              id="name"
+              value={email}
+              name="email"
               onChange={handleChange}
             />
           </div>
