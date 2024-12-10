@@ -14,12 +14,12 @@ const index = async () => {
 const show = async (travelId) => {
     try {
         const res = await fetch(`${BASE_URL}/${travelId}`, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        });
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
+        })
         return res.json()
-    } catch (error) {
-        console.log('Error fetching travel list:', error);
+    }catch(error){
+        console.log(error)
     }
-};
+}
 
 export { index, show }

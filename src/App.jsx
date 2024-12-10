@@ -43,7 +43,7 @@ const App = () => {
           < >
           <Route path='/' element={<Dashboard user={user} />} />
           <Route path='travels' element={<TravelList travels={travels} />} />
-          <Route path='/travels/:travelsId' element={<TravelDetails />} />
+          <Route path='/travels/:travelId' element={<TravelDetails />} />
           </>
         ) : (
           <Route path='/' element={<Landing />} />  
