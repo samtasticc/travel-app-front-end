@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useParams } from "react-router-dom"
 import * as travelService from '../../services/travelService'
 import ActivityForm from "../ActivityForm/ActivityForm"
+import { AuthedUserContext } from "../../App"
 
 const TravelDetails = (props) => {
     const {travelId} = useParams()
     // console.log('travelId', travelId)
     const [travel, setTravel] = useState(null)
+    const user = useContext(AuthedUserContext)
     useEffect(() => {
         const fetchTravel = async () => {
             const travelData = await travelService.show(travelId)
@@ -22,6 +24,8 @@ const handleAddActivity = async (activityFormData) => {
     setTravel({...travel, activity: [...travel.activity, newActivity]})
 }
 
+// ! line 37-42 is causing an error
+
     if (!travel) return <main>Loading...</main>
     return (
         <main>
@@ -29,8 +33,13 @@ const handleAddActivity = async (activityFormData) => {
                 <p>{travel.title.toUpperCase()}</p>
                 <h1>{travel.title}</h1>
                 <p>
-                    {travel.author? travel.author.username : "Unknown Author"} posted on {new Date(travel.createdAt).toLocaleDateString()}
+                    {travel.author ? travel.author.username : "Unknown Author"} posted on {new Date(travel.createdAt).toLocaleDateString()}
                 </p>
+                {travel.author._id === user._id && (
+                    <>
+                        <button onClick={() => {props.handleDeleteTravel(travelId)}}>Delete</button>
+                    </>
+                )}
             </header>
             <p>{travel.text}</p>
             <section>

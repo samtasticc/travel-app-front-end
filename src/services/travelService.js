@@ -54,4 +54,19 @@ const createActivity = async (travelId, activityFormData) => {
     }
   };
 
-export { index, show, create, createActivity }
+  const deleteTravel = async (travelId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${travelId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+export { index, show, create, createActivity, deleteTravel }

@@ -43,26 +43,31 @@ const App = () => {
     navigate('/travels')
   }
 
+  const handleDeleteTravel = async (travelId) => {
+    // console.log('travelId', travelId)
+    const deletedTravel = await travelService.deleteTravel(travelId)
+    setTravels(travel.filter((travel) => travel._id !== deletedTravel._id))
+    navigate('/travels')
+  }
   return (
     <>
       <AuthedUserContext.Provider value={user}>
-      <NavBar user={user} handleSignout={handleSignout} />
-      <Routes>
-        { user ? (
-          < >
-          <Route path='/' element={<Dashboard user={user} />} />
-          <Route path='travels' element={<TravelList travels={travels} />} />
-          <Route path='/travels/:travelId' element={<TravelDetails />} />
-          <Route path='/travels/new' element={<TravelForm handleAddTravel={handleAddTravel} />} />
-          </>
-        ) : (
-          <Route path='/' element={<Landing />} />  
-        )}
-        <Route path="/signup" element={<SignupForm setUser={setUser} />} />
-        <Route path='/signin' element={<SigninForm setUser={setUser} />} />
-      </Routes>
+        <NavBar user={user} handleSignout={handleSignout} />
+        <Routes>
+          { user ? (
+            < >
+            <Route path='/' element={<Dashboard user={user} />} />
+            <Route path='travels' element={<TravelList travels={travels} />} />
+            <Route path='/travels/:travelId' element={<TravelDetails handleDeleteTravel={handleDeleteTravel} />} />
+            <Route path='/travels/new' element={<TravelForm handleAddTravel={handleAddTravel} />} />
+            </>
+          ) : (
+            <Route path='/' element={<Landing />} />  
+          )}
+          <Route path="/signup" element={<SignupForm setUser={setUser} />} />
+          <Route path='/signin' element={<SigninForm setUser={setUser} />} />
+        </Routes>
       </AuthedUserContext.Provider>
-      
     </>
   )
 }
