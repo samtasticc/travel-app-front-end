@@ -27,6 +27,17 @@ const TravelDetails = (props) => {
             <p>{travel.text}</p>
             <section>
                 <h2>Activities:</h2>
+                {!travel.activity.length && <p>There are no activities.</p>}
+                {travel.activity.map((activity) => (
+                    <article key={activity._id}>
+                        <header>
+                            <p>
+                                {activity.author.username} posted on {new Date(activity.createdAt).toLocaleDateString}
+                            </p>
+                        </header>
+                        <p>{activity.text}</p>
+                    </article>
+                ))}
             </section>
         </main>
     )
