@@ -38,4 +38,20 @@ const create = async (travelFormData) => {
     }
 }
 
-export { index, show, create }
+const createActivity = async (travelId, activityFormData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${travelId}/activity`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(activityFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+export { index, show, create, createActivity }

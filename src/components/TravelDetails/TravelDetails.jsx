@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import * as travelService from '../../services/travelService'
+import ActivityForm from "../ActivityForm/ActivityForm"
 
 const TravelDetails = (props) => {
     const {travelId} = useParams()
@@ -14,6 +15,13 @@ const TravelDetails = (props) => {
         }
         fetchTravel()
     }, [travelId])
+
+const handleAddActivity = async (activityFormData) => {
+    // console.log('activityFormData', activityFormData)
+    const newActivity = await travelService.createActivity(travelId, activityFormData)
+    setTravel({...travel, activity: [...travel.activity, newActivity]})
+}
+
     if (!travel) return <main>Loading...</main>
     return (
         <main>
@@ -27,6 +35,7 @@ const TravelDetails = (props) => {
             <p>{travel.text}</p>
             <section>
                 <h2>Activities:</h2>
+                <ActivityForm handleAddActivity={handleAddActivity}/>
                 {!travel.activity.length && <p>There are no activities.</p>}
                 {travel.activity.map((activity) => (
                     <article key={activity._id}>
