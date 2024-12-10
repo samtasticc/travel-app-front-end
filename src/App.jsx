@@ -11,6 +11,7 @@ import './App.css'
 
 import TravelList from './components/TravelList/TravelList'
 import TravelDetails from './components/TravelDetails/TravelDetails'
+import TravelForm from './components/TravelForm/TravelForm'
 
 export const AuthedUserContext = createContext(null)
 
@@ -44,6 +45,7 @@ const App = () => {
           <Route path='/' element={<Dashboard user={user} />} />
           <Route path='travels' element={<TravelList travels={travels} />} />
           <Route path='/travels/:travelId' element={<TravelDetails />} />
+          <Route path='/travels/new' element={<h1>New Travel Wishlist</h1>} />
           </>
         ) : (
           <Route path='/' element={<Landing />} />  
