@@ -16,13 +16,15 @@ const TravelForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log('formData', formData);
+        // console.log('formData', formData);
+        props.handleAddTravel(formData)
       };
+
     
       return (
         <main>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="title-input">Title:</label>
+            <label htmlFor="title-input">Title: </label>
             <input
               required
               type="text"
@@ -31,7 +33,8 @@ const TravelForm = (props) => {
               value={formData.title}
               onChange={handleChange}
             />
-            <label htmlFor="date-input">Date:</label>
+            <br/>
+            <label htmlFor="date-input">Date: </label>
             <input
               required
               type="text"
@@ -40,7 +43,8 @@ const TravelForm = (props) => {
               value={formData.date}
               onChange={handleChange}
             />
-            <label htmlFor="country-input">Country:</label>
+            <br/>
+            <label htmlFor="country-input">Country: </label>
             <input
               required
               type="text"
@@ -49,7 +53,8 @@ const TravelForm = (props) => {
               value={formData.country}
               onChange={handleChange}
             />
-            <label htmlFor="flights-input">Flights:</label>
+            <br/>
+            <label htmlFor="flights-input">Flights: </label>
             <input
               required
               type="text"
@@ -58,7 +63,8 @@ const TravelForm = (props) => {
               value={formData.flights}
               onChange={handleChange}
             />
-            <label htmlFor="hotels-input">Hotels:</label>
+            <br/>
+            <label htmlFor="hotels-input">Hotels: </label>
             <input
               required
               type="text"
@@ -67,7 +73,8 @@ const TravelForm = (props) => {
               value={formData.hotels}
               onChange={handleChange}
             />
-            <label htmlFor="restaurants-input">Restaurants:</label>
+            <br/>
+            <label htmlFor="restaurants-input">Restaurants: </label>
             <input
               required
               type="text"
@@ -76,6 +83,7 @@ const TravelForm = (props) => {
               value={formData.restaurants}
               onChange={handleChange}
             />
+            <br/>
             <button type="submit">SUBMIT</button>
           </form>
         </main>

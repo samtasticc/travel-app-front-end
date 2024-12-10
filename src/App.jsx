@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Landing from './components/Landing/Landing'
 import Dashboard from './components/Dashboard/Dashboard'
@@ -20,6 +20,7 @@ export const AuthedUserContext = createContext(null)
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [travels, setTravels] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchAllTravels = async () => {
@@ -35,6 +36,13 @@ const App = () => {
     setUser(null)
   }
 
+  const handleAddTravel = async (travelFormData) => {
+    const newTravel = await travelService.create(travelFormData)
+    setTravels([newTravel, ...travels])
+    // console.log('travelFormData', travelFormData)
+    navigate('/travels')
+  }
+
   return (
     <>
       <AuthedUserContext.Provider value={user}>
@@ -45,7 +53,7 @@ const App = () => {
           <Route path='/' element={<Dashboard user={user} />} />
           <Route path='travels' element={<TravelList travels={travels} />} />
           <Route path='/travels/:travelId' element={<TravelDetails />} />
-          <Route path='/travels/new' element={<h1>New Travel Wishlist</h1>} />
+          <Route path='/travels/new' element={<TravelForm handleAddTravel={handleAddTravel} />} />
           </>
         ) : (
           <Route path='/' element={<Landing />} />  
