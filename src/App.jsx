@@ -49,6 +49,14 @@ const App = () => {
     setTravels(travel.filter((travel) => travel._id !== deletedTravel._id))
     navigate('/travels')
   }
+
+  const handleUpdateTravel = async (travelId, travelFormData) => {
+    console.log('travelId:', travelId, 'travelFormData:', travelFormData)
+    const updateTravel = await travelService.update(travelId, travelFormData)
+    setTravels(travels.map((travel) => (travelId === travel._id ? updateTravel : travel)))
+    navigate(`/travels/${travelId}`)
+  }
+
   return (
     <>
       <AuthedUserContext.Provider value={user}>
@@ -60,6 +68,7 @@ const App = () => {
             <Route path='travels' element={<TravelList travels={travels} />} />
             <Route path='/travels/:travelId' element={<TravelDetails handleDeleteTravel={handleDeleteTravel} />} />
             <Route path='/travels/new' element={<TravelForm handleAddTravel={handleAddTravel} />} />
+            <Route path='/travels/:travelId/edit' element={<TravelForm handleUpdateTravel={handleUpdateTravel} />} />
             </>
           ) : (
             <Route path='/' element={<Landing />} />  

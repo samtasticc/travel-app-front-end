@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import * as travelService from '../../services/travelService'
+import { useParams } from "react-router-dom";
 
 const TravelForm = (props) => {
     const [formData, setFormData] = useState({
@@ -10,20 +12,34 @@ const TravelForm = (props) => {
         restaurants: ''
     })
 
+    const {travelId} = useParams()
+
+    useEffect(() => {
+      const fetchTravel = async () => {
+        const travelData = await travelService.show(travelId)
+        setFormData(travelData)
+      }
+      if(travelId) fetchTravel()
+    }, [travelId])
+
     const handleChange = (evt) => {
         setFormData({...formData, [evt.target.name]: evt.target.value})
     }
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        // console.log('formData', formData);
-        props.handleAddTravel(formData)
+        if (travelId) {
+          props.handleUpdateTravel(travelId, formData)
+        } else {
+          props.handleAddTravel(formData)
+        }
       };
 
     
       return (
         <main>
           <form onSubmit={handleSubmit}>
+            <h1>{travelId ? 'Edit Travel' : 'New Travel'}</h1>
             <label htmlFor="title-input">Title: </label>
             <input
               required

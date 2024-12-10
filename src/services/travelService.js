@@ -68,5 +68,21 @@ const createActivity = async (travelId, activityFormData) => {
     }
   };
   
+  async function update(travelId, travelFormData) {
+    try {
+      const res = await fetch(`${BASE_URL}/${travelId}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(travelFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
 
-export { index, show, create, createActivity, deleteTravel }
+export { index, show, create, createActivity, deleteTravel, update }

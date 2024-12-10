@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import * as travelService from '../../services/travelService'
 import ActivityForm from "../ActivityForm/ActivityForm"
 import { AuthedUserContext } from "../../App"
@@ -37,6 +37,7 @@ const handleAddActivity = async (activityFormData) => {
                 </p>
                 {travel.author._id === user._id && (
                     <>
+                        <Link to={`/travels/${travelsId}/edit`}>Edit</Link>
                         <button onClick={() => {props.handleDeleteTravel(travelId)}}>Delete</button>
                     </>
                 )}
