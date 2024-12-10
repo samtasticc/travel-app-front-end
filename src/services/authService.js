@@ -1,4 +1,4 @@
-const BACKEND_URL = 'http://localhost:3000'
+const BACKEND_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}`
 
 const signup = async (FormData) => {
     try {
@@ -20,7 +20,6 @@ const signup = async (FormData) => {
         throw err
     }
 }
-
 
 const signin = async (user) => {
     try {
