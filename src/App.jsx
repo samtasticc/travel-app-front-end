@@ -10,6 +10,7 @@ import * as travelService from '../src/services/travelService'
 import './App.css'
 
 import TravelList from './components/TravelList/TravelList'
+import TravelDetails from './components/TravelDetails/TravelDetails'
 
 export const AuthedUserContext = createContext(null)
 
@@ -42,6 +43,7 @@ const App = () => {
           < >
           <Route path='/' element={<Dashboard user={user} />} />
           <Route path='travels' element={<TravelList travels={travels} />} />
+          <Route path='/travels/:travelsId' element={<TravelDetails />} />
           </>
         ) : (
           <Route path='/' element={<Landing />} />  
