@@ -5,23 +5,19 @@ import ActivityForm from "../ActivityForm/ActivityForm"
 import { AuthedUserContext } from "../../App"
 
 const TravelDetails = (props) => {
-    // const {travelId} = useParams()
     const params = useParams()
     const travelId = params?.travelId
-    // console.log('travelId', travelId)
     const [travel, setTravel] = useState(null)
     const user = useContext(AuthedUserContext)
     useEffect(() => {
         const fetchTravel = async () => {
             const travelData = await travelService.show(travelId)
-            // console.log('travelData', travelData)
             setTravel(travelData)
         }
         fetchTravel()
     }, [travelId])
 
 const handleAddActivity = async (activityFormData) => {
-    // console.log('activityFormData', activityFormData)
     const newActivity = await travelService.createActivity(travelId, activityFormData)
     setTravel({...travel, activity: [...travel.activity, newActivity]})
 }

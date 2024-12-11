@@ -39,12 +39,10 @@ const App = () => {
   const handleAddTravel = async (travelFormData) => {
     const newTravel = await travelService.create(travelFormData)
     setTravels([newTravel, ...travels])
-    // console.log('travelFormData', travelFormData)
     navigate('/travels')
   }
 
   const handleDeleteTravel = async (travelId) => {
-    // console.log('travelId', travelId)
     const deletedTravel = await travelService.deleteTravel(travelId)
     setTravels(travels.filter((travel) => travel._id !== deletedTravel._id))
     navigate('/travels')

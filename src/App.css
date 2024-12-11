@@ -1,4 +1,4 @@
-#root, body {
+#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -7,15 +7,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fdf6e3; /* Aged paper color */
-  color: #000; /* Black text */
-}
+  background-color: #fdf6e3; 
+  color: #000; 
+  min-height: 100vh; 
+  box-sizing: border-box;
+} 
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #e8dcbf; /* Slightly darker aged paper */
+  background-color: #e8dcbf;
   padding: 1rem 2rem;
   width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -40,7 +42,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #646cff; /* Highlight color */
+  color: #d6d6d6aa;
 }
 
 .logo {
@@ -50,10 +52,10 @@ nav a:hover {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #d6d6d6aa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #d6d6d6aa);
 }
 
 @keyframes logo-spin {
@@ -77,10 +79,10 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fdf6e3; /* Aged paper color */
-  color: #000; /* Black text */
+  background-color: #fdf6e3;
+  color: #000; 
 }
 
 .read-the-docs {
-  color: #000; /* Black text */
+  color: #000;
 }
