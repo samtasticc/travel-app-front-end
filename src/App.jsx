@@ -46,7 +46,7 @@ const App = () => {
   const handleDeleteTravel = async (travelId) => {
     // console.log('travelId', travelId)
     const deletedTravel = await travelService.deleteTravel(travelId)
-    setTravels(travel.filter((travel) => travel._id !== deletedTravel._id))
+    setTravels(travels.filter((travel) => travel._id !== deletedTravel._id))
     navigate('/travels')
   }
 

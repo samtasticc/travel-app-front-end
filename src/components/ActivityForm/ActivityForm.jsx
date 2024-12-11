@@ -3,7 +3,11 @@ import * as travelService from '../../services/travelService'
 
 
 const ActivityForm = (props) => {
-  const [formData, setFormData] = useState({ text: '' });
+  const [formData, setFormData] = useState({ 
+        name: '', 
+        duration: '',
+        cost: '',
+    });
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -13,10 +17,10 @@ const ActivityForm = (props) => {
     evt.preventDefault();
     props.handleAddActivity(formData)
     setFormData({ 
-        name: '', 
-        duration: '',
-        cost: '',
-    });
+      name: '', 
+      duration: '',
+      cost: '',
+  });
   };
 
   return (

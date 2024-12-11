@@ -5,7 +5,9 @@ import ActivityForm from "../ActivityForm/ActivityForm"
 import { AuthedUserContext } from "../../App"
 
 const TravelDetails = (props) => {
-    const {travelId} = useParams()
+    // const {travelId} = useParams()
+    const params = useParams()
+    const travelId = params?.travelId
     // console.log('travelId', travelId)
     const [travel, setTravel] = useState(null)
     const user = useContext(AuthedUserContext)
@@ -24,7 +26,8 @@ const handleAddActivity = async (activityFormData) => {
     setTravel({...travel, activity: [...travel.activity, newActivity]})
 }
 
-    if (!travel) return <main>Loading...</main>
+    if (!travel)
+        return (<main>Loading...</main>);
     return (
         <main>
             <header>
@@ -33,9 +36,9 @@ const handleAddActivity = async (activityFormData) => {
                 <p>
                     {travel.author ? travel.author.username : "Unknown Author"} posted on {new Date(travel.createdAt).toLocaleDateString()}
                 </p>
-                {travel.author._id === user._id && (
+                {travel.author?._id === user._id && (
                     <>
-                        <Link to={`/travels/${travelsId}/edit`}>Edit</Link>
+                        <Link to={`/travels/${travelId}/edit`}>Edit</Link>
                         <button onClick={() => {props.handleDeleteTravel(travelId)}}>Delete</button>
                     </>
                 )}
@@ -49,7 +52,7 @@ const handleAddActivity = async (activityFormData) => {
                     <article key={activity._id}>
                         <header>
                             <p>
-                                {activity.author.username} posted on {new Date(activity.createdAt).toLocaleDateString}
+                                {activity.author? activity.author.username : "Unknown Author"} posted on {new Date(activity.createdAt).toLocaleDateString()}
                             </p>
                         </header>
                         <p>{activity.text}</p>
