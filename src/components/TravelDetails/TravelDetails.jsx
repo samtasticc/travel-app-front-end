@@ -24,8 +24,6 @@ const handleAddActivity = async (activityFormData) => {
     setTravel({...travel, activity: [...travel.activity, newActivity]})
 }
 
-// ! line 37-42 is causing an error
-
     if (!travel) return <main>Loading...</main>
     return (
         <main>

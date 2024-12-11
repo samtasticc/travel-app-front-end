@@ -1,8 +1,46 @@
-#root {
+#root, body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fdf6e3; /* Aged paper color */
+  color: #000; /* Black text */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e8dcbf; /* Slightly darker aged paper */
+  padding: 1rem 2rem;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: color 200ms ease-in-out;
+}
+
+nav a:hover {
+  color: #646cff; /* Highlight color */
 }
 
 .logo {
@@ -35,8 +73,14 @@
 
 .card {
   padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fdf6e3; /* Aged paper color */
+  color: #000; /* Black text */
 }
 
 .read-the-docs {
-  color: #888;
+  color: #000; /* Black text */
 }

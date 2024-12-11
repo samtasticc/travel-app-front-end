@@ -1,6 +1,6 @@
 const BACKEND_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}`
 
-const signup = async (FormData) => {
+const signup = async (formData) => {
     try {
         const res = await fetch(`${BACKEND_URL}/users/signup`, {
             method: 'POST',
@@ -13,7 +13,7 @@ const signup = async (FormData) => {
         }
         if(json.token) {
             localStorage.setItem('token', json.token)
-            const user = JSON.parse(atob(json.token.split('.')[1]));
+            const user = JSON.parse(atob(json.token.split('.')[1]))
             return user;
         }
     } catch (err) {
@@ -31,7 +31,7 @@ const signin = async (user) => {
       const json = await res.json()
   
       if (json.token) {
-        localStorage.setItem('token', json.token); // add this line to store the JWT token in localStorage
+        localStorage.setItem('token', json.token); 
   
         const user = JSON.parse(atob(json.token.split('.')[1]));
   
