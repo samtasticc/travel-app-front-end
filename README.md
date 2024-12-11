@@ -7,7 +7,9 @@
 Where your travel aspirations take flight!
 
 Jet Set Journal is a travel wishlist tracker to help users map out and maintain their future travel plans. Users can create an account, log in, and create their next vacation. Each travel plan allows the user to add a title, date, Country, state/territory, flight options, hotel options, restaurant options, and activity ideas.
-  
+
+### Background Info
+I chose to build a travel app because every time I say I want to travel somewhere, my boyfriend adds the place to an Excel spreadsheet and I thought it would be nicer to have an app for that.
 ### Getting Started
 [My Deployed Site - Back End](https://jetsetjournal-be-09e2ae2381a7.herokuapp.com/)
 [My Deployed Site - Front End](https://jetsetjournal.netlify.app/)
@@ -32,13 +34,15 @@ Jet Set Journal is a travel wishlist tracker to help users map out and maintain 
 * AAU, I want to be able to add a territory or a state I want to visit but I don't want it to be required.
 
 #### MVP Requirements
-* The app utilizes EJS Templates for rendering views to users.
-* The app uses session-based authentication.
-* The app’s files are organized following the conventions taught in lectures.
-* The app has at least one data entity in addition to the User model. At least one entity must have a relationship with the User model.
-* The app has full CRUD functionality.
-* Authorization is implemented in the app. Guest users (those not signed in) should not be able to create, update, or delete data in the application or access functionality allowing those actions.
-* The app is deployed online so that the rest of the world can use it.
+* The back-end application is built with Express and Node.
+* The front-end application is built with React.
+* MongoDB is used as the database management system.
+* The back-end and front-end applications implement JWT token-based authentication to sign up, sign in, and sign out users.
+* Authorization is implemented across the front-end and back-end. Guest users (those not signed in) should not be able to create, update, or delete data in the application or access functionality allowing those actions.
+* The project has at least two data entities in addition to the User model. At least one entity must have a relationship with the User model.
+* The project has full CRUD functionality on both the back-end and front-end.
+* The front-end application does not hold any secret keys. Public APIs that require secret keys must be accessed from the back-end application.
+* The project is deployed online so that the rest of the world can use it.
 
 #### Technologies Used
 * HTML
